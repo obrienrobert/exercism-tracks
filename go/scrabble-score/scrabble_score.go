@@ -23,19 +23,19 @@ func Score(word string) int {
 
 		switch s[i] {
 		case "a", "e", "i", "o", "u", "l", "n", "r", "s", "t":
-			sum = sum + 1
+			sum++
 		case "d", "g":
-			sum = sum + 2
+			sum += 2
 		case "b", "c", "m", "p":
-			sum = sum + 3
+			sum += 3
 		case "f", "h", "v", "w", "y":
-			sum = sum + 4
+			sum += 4
 		case "k":
-			sum = sum + 5
+			sum += 5
 		case "j", "x":
-			sum = sum + 8
+			sum += 8
 		case "q", "z":
-			sum = sum + 10
+			sum += 10
 		}
 	}
 
