@@ -14,7 +14,7 @@ func Transform(input map[int][]string) map[string]int {
 	for key, value := range input {
 		fmt.Println("Key:", key, "Value:", value)
 
-		for i := 0; i < len(value); i++ {
+		for i := range value {
 			m[strings.ToLower(value[i])] = key
 		}
 	}
