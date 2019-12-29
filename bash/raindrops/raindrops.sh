@@ -3,15 +3,15 @@
 main() {
   rainDrop=''
 
-  if [[ $(($1 % 3)) == 0 ]]; then
+  if (( $1 % 3 == 0 )); then
     rainDrop+="Pling"
   fi
 
-  if [[ $(($1 % 5)) == 0 ]]; then
+  if (( $1 % 5 == 0 )); then
     rainDrop+="Plang"
   fi
 
-  if [[ $(($1 % 7)) == 0 ]]; then
+  if (( $1 % 7 == 0 )); then
     rainDrop+="Plong"
   fi
 
