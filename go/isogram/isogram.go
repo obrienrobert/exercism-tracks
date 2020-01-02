@@ -3,21 +3,17 @@ package isogram
 
 import (
 	"strings"
+	"unicode"
 )
 
 // IsIsogram returns true if the given string is an isogram
 func IsIsogram(input string) bool {
 
-	s := strings.Replace(input, "-", "", -1)
-	s = strings.Replace(s, " ", "", -1)
-	split := strings.Split(s, "")
+	input = strings.ToLower(input)
 
-	for i := range s {
-
-		for j := i + 1; j < len(s); j++ {
-			if strings.ToLower(split[i]) == strings.ToLower(split[j]) {
-				return false
-			}
+	for i, j := range input {
+		if strings.ContainsRune(input[i+1:], j) && unicode.IsLetter(j) {
+			return false
 		}
 	}
 
