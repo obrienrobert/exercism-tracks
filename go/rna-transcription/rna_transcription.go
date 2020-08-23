@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// ToRNA returns the RNA compliment of the given DNA string sequence
 func ToRNA(dna string) string {
 
 	rna := ""
