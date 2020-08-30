@@ -1,14 +1,14 @@
 package luhn
 
 import (
-	"strconv"
 	"strings"
+	"unicode"
 )
 
 // Valid validates if the supplied string is a valid Luhn number
 // https://www.wikiwand.com/en/Luhn_algorithm#/Pseudocode_implementation
 func Valid(sin string) bool {
-	str := strings.Replace(sin, " ", "", -1)
+	str := strings.ReplaceAll(sin, " ", "")
 
 	// return if the string isn't of sufficient length
 	if len(str) < 2 {
@@ -19,19 +19,21 @@ func Valid(sin string) bool {
 	total := 0
 
 	for _, v := range str {
-		val, err := strconv.Atoi(string(v))
-		if err != nil {
-			return false
-		}
-		if mod {
-			val *= 2
-			if val > 9 {
-				val -= 9
+
+		if unicode.IsDigit(v) {
+			v := int(v - '0')
+
+			if mod {
+				v *= 2
+				if v > 9 {
+					v -= 9
+				}
 			}
+
+			mod = !mod
+			total += v
 		}
 
-		mod = !mod
-		total += val
 	}
 
 	return total%10 == 0
