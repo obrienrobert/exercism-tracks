@@ -32,6 +32,8 @@ func Valid(sin string) bool {
 
 			mod = !mod
 			total += v
+		} else {
+			return false
 		}
 
 	}
