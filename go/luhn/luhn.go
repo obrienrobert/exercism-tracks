@@ -19,23 +19,20 @@ func Valid(sin string) bool {
 	total := 0
 
 	for _, v := range str {
-
-		if unicode.IsDigit(v) {
-			v := int(v - '0')
-
-			if mod {
-				v *= 2
-				if v > 9 {
-					v -= 9
-				}
-			}
-
-			mod = !mod
-			total += v
-		} else {
+		if !unicode.IsDigit(v) {
 			return false
 		}
+		v := int(v - '0')
 
+		if mod {
+			v *= 2
+			if v > 9 {
+				v -= 9
+			}
+		}
+
+		mod = !mod
+		total += v
 	}
 
 	return total%10 == 0
